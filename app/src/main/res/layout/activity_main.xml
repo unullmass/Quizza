@@ -1,18 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="quizza.unullmass.net.quizza.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_questremaining"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Ques Remaining: "
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textview_answeredcorrectly"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Ans Correct: "
+                android:layout_alignParentRight="true"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textview_question"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textSize="30sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black" />
+
+        <RadioGroup
+            android:id="@+id/rg_answerchoices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_choice1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:leftPadding="5dp"
+                android:onClick="checkAnswer"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/radio_choice2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:leftPadding="5dp"
+                android:onClick="checkAnswer"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/radio_choice3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:leftPadding="5dp"
+                android:onClick="checkAnswer"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/radio_choice4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:leftPadding="5dp"
+                android:onClick="checkAnswer"
+                android:textSize="10sp" />
+        </RadioGroup>
+
+    </LinearLayout>
+</ScrollView>
