@@ -90,10 +90,11 @@
         </RadioGroup>
 
         <Button
+            android:id="@+id/btn_resetnew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/reset_quiz"
+            android:text="@string/new_quiz"
             android:onClick="resetQuiz" />
 
     </LinearLayout>
