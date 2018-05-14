@@ -3,6 +3,9 @@ package quizza.unullmass.net.quizza;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,7 +57,20 @@ public class MainActivity extends AppCompatActivity {
      * @param view - this is the view reference of the Reset button that transmits the click event
      */
     public void resetQuiz(View view) {
+        ArrayList<HashMap<String, String>> qa = new ArrayList<HashMap<String, String>>();
+        rightAnswers = 0;
+        quesRemaining = MAX_QUESTIONS;
+        // reset the text views to their default state
+        ((TextView) findViewById(R.id.textview_questremaining)).setText(R.string.ques_rem);
+        ((TextView) findViewById(R.id.textview_answeredcorrectly)).setText(R.string.ans_correct);
+        ((TextView) findViewById(R.id.textview_question)).setText(R.string.blank_text);
 
+        // clear the radio groups
+        RadioGroup ans_rg = ((RadioGroup) findViewById(R.id.rg_answerchoices));
+        ans_rg.clearCheck();
+        for (int i = 0; i < ans_rg.getChildCount(); i++) {
+            ((RadioButton) ans_rg.getChildAt(i)).setText(R.string.blank_text);
+        }
     }
 
     /**
