@@ -19,14 +19,14 @@
                 android:id="@+id/textview_questremaining"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Ques Remaining: "
+                android:text="@string/ques_rem"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/textview_answeredcorrectly"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Ans Correct: "
+                android:text="@string/ans_correct"
                 android:layout_alignParentRight="true"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:enabled="false"
-                android:leftPadding="5dp"
+                android:paddingLeft="5dp"
                 android:onClick="checkAnswer"
                 android:textSize="10sp" />
 
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:enabled="false"
-                android:leftPadding="5dp"
+                android:paddingLeft="5dp"
                 android:onClick="checkAnswer"
                 android:textSize="10sp" />
 
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:enabled="false"
-                android:leftPadding="5dp"
+                android:paddingLeft="5dp"
                 android:onClick="checkAnswer"
                 android:textSize="10sp" />
 
@@ -84,10 +84,17 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:enabled="false"
-                android:leftPadding="5dp"
+                android:paddingLeft="5dp"
                 android:onClick="checkAnswer"
                 android:textSize="10sp" />
         </RadioGroup>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/reset_quiz"
+            android:onClick="resetQuiz" />
 
     </LinearLayout>
 </ScrollView>

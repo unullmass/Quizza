@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Quizza</string>
+    <string name="ques_rem">Ques Remaining: </string>
+    <string name="ans_correct">Ans Correct: </string>
+    <string name="reset_quiz">NEW QUIZ</string>
+    <string name="get_ques_url">https://opentdb.com/api.php?amount=10&amp;amp;type=multiple</string>
 </resources>
