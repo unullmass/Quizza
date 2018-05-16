@@ -56,7 +56,7 @@
                 android:enabled="false"
                 android:paddingLeft="5dp"
                 android:onClick="checkAnswer"
-                android:textSize="10sp" />
+                android:textSize="30sp" />
 
             <RadioButton
                 android:id="@+id/radio_choice2"
@@ -66,7 +66,7 @@
                 android:enabled="false"
                 android:paddingLeft="5dp"
                 android:onClick="checkAnswer"
-                android:textSize="10sp" />
+                android:textSize="30sp" />
 
             <RadioButton
                 android:id="@+id/radio_choice3"
@@ -76,7 +76,7 @@
                 android:enabled="false"
                 android:paddingLeft="5dp"
                 android:onClick="checkAnswer"
-                android:textSize="10sp" />
+                android:textSize="30sp" />
 
             <RadioButton
                 android:id="@+id/radio_choice4"
@@ -86,7 +86,7 @@
                 android:enabled="false"
                 android:paddingLeft="5dp"
                 android:onClick="checkAnswer"
-                android:textSize="10sp" />
+                android:textSize="30sp" />
         </RadioGroup>
 
         <Button
