@@ -250,6 +250,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 url = new URL(URLDecoder.decode(getString(R.string.get_ques_url)));
 
+                // Fetch the Q&A using an AsyncTask
                 DownloadQandATask dqa = new DownloadQandATask();
                 dqa.execute(url);
                 qa = dqa.get();
