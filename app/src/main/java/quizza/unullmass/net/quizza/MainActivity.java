@@ -159,19 +159,26 @@ public class MainActivity extends AppCompatActivity {
      * This method ends the quiz and gives the user their final score
      */
     public void endQuiz() {
-        // display a toast with the final score
-        if (rightAnswers == 10) {
-            Toast.makeText(this, "You answered ALL questions correctly! A TOAST to you!", Toast.LENGTH_LONG).show();
-        } else if (rightAnswers > 1) {
-            Toast.makeText(this, "You answered " + rightAnswers + " questions correctly! Keep going!", Toast.LENGTH_LONG).show();
-        } else if (rightAnswers == 1) {
-            Toast.makeText(this, "You answered 1 question correctly! Try harder!", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "You answered no questions correctly! Don't give up!", Toast.LENGTH_LONG).show();
-        }
+
+        int _rightAnswers = rightAnswers;
 
         // Disable the choices so no more questions can be answered
         doResetQuiz();
+
+        TextView tvq = findViewById(R.id.textview_question);
+        // display a toast with the final score
+        if (_rightAnswers == 10) {
+            tvq.setText("You answered ALL questions correctly! A TOAST to you!");
+        } else if (_rightAnswers > 1) {
+            tvq.setText("You answered " + _rightAnswers + " questions correctly! Keep going!");
+        } else if (_rightAnswers == 1) {
+            tvq.setText("You answered 1 question correctly! Try harder!");
+        } else {
+            tvq.setText("You answered no questions correctly! Don't give up!");
+        }
+
+
+
     }
 
     /**
@@ -262,4 +269,3 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 }
-
