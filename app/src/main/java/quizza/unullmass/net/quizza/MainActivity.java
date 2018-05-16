@@ -42,13 +42,22 @@ public class MainActivity extends AppCompatActivity {
     private int quesRemaining = MAX_QUESTIONS;
     private boolean[] askedQ = new boolean[MAX_QUESTIONS];
     private String correctans;
+    Button resetBtn;
+    TextView tvq, tvqrem, tvrightans;
+    RadioGroup ans_rg;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        resetBtn = findViewById(R.id.btn_resetnew);
+        tvq = findViewById(R.id.textview_question);
+        ans_rg = findViewById(R.id.rg_answerchoices);
+        tvqrem = findViewById(R.id.textview_questremaining);
+        tvrightans = findViewById(R.id.textview_answeredcorrectly);
     }
+
 
     /**
      * This method checks if the question was answered correctly
@@ -110,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
      * This method resets the UI and state to defaults.
      */
     public void doResetQuiz() {
-        Button resetBtn = findViewById(R.id.btn_resetnew);
 
         // check if the quiz is running
         if (!quizRunning) {
@@ -130,10 +138,9 @@ public class MainActivity extends AppCompatActivity {
 
             // reset the text views to their default state
             updateMetrics();
-            ((TextView) findViewById(R.id.textview_question)).setText("");
+            tvq.setText("");
 
             // clear the radio groups
-            RadioGroup ans_rg = findViewById(R.id.rg_answerchoices);
             ans_rg.clearCheck();
             for (int i = 0; i < ans_rg.getChildCount(); i++) {
                 RadioButton rb = ((RadioButton) ans_rg.getChildAt(i));
@@ -151,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void updateMetrics() {
         // set the metrics in the layout
-        ((TextView) findViewById(R.id.textview_questremaining)).setText(getString(R.string.ques_rem) + quesRemaining);
-        ((TextView) findViewById(R.id.textview_answeredcorrectly)).setText(getString(R.string.ans_correct) + rightAnswers);
+        tvqrem.setText(getString(R.string.ques_rem) + quesRemaining);
+        tvrightans.setText(getString(R.string.ans_correct) + rightAnswers);
     }
 
     /**
@@ -165,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         // Disable the choices so no more questions can be answered
         doResetQuiz();
 
-        TextView tvq = findViewById(R.id.textview_question);
+
         // display a toast with the final score
         if (_rightAnswers == 10) {
             tvq.setText("You answered ALL questions correctly! A TOAST to you!");
@@ -229,10 +236,9 @@ public class MainActivity extends AppCompatActivity {
             updateMetrics();
 
             // set the question text in the UI
-            ((TextView) findViewById(R.id.textview_question)).setText(question);
+            tvq.setText(question);
 
             // set the choices in the radio group
-            RadioGroup ans_rg = findViewById(R.id.rg_answerchoices);
             ans_rg.clearCheck();
             for (int i = 0; i < ans_rg.getChildCount(); i++) {
                 RadioButton rb = ((RadioButton) ans_rg.getChildAt(i));
