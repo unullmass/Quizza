@@ -21,9 +21,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by unullmass on 16/05/18.
+ * This class performs an asynchronous download of the Questions and Answers.
  */
-
-
 class DownloadQandATask extends AsyncTask<URL, Integer, ArrayList<HashMap<String, String>>> {
     protected ArrayList<HashMap<String, String>> doInBackground(URL... urls) {
         URL url = null;
