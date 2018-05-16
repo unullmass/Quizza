@@ -244,89 +244,20 @@ public class MainActivity extends AppCompatActivity {
      * or lack thereof - false
      */
     private boolean getQandA() {
-        int SDK_INT = android.os.Build.VERSION.SDK_INT;
-        if (SDK_INT > 8) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                    .permitAll().build();
-            StrictMode.setThreadPolicy(policy);
 
             URL url;
             HttpsURLConnection urlConnection = null;
             try {
                 url = new URL(URLDecoder.decode(getString(R.string.get_ques_url)));
 
-
-                if (url.getProtocol().toLowerCase().equals("https")) {
-                    urlConnection = (HttpsURLConnection) url
-                            .openConnection();
-                }
-
-                InputStream in;
-                if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    in = urlConnection.getInputStream();
-                    InputStreamReader isw = new InputStreamReader(in);
-                    BufferedReader bf = new BufferedReader(isw);
-
-                    StringBuilder data = new StringBuilder();
-                    String line;
-
-                    while ((line = bf.readLine()) != null) {
-                        data.append(line);
-                    }
-
-                    JSONObject jo = new JSONObject(data.toString());
-
-                    JSONArray jArray = jo.getJSONArray("results");
-
-                    for (int i = 0; i < jArray.length(); i++) {
-                        try {
-                            JSONObject oneObject = jArray.getJSONObject(i);
-                            // Pulling items from the array
-                            String question = Html.fromHtml(oneObject.getString("question")).toString();
-                            String rightans = Html.fromHtml(oneObject.getString("correct_answer")).toString();
-                            // parse the array containing wrong answers
-                            JSONArray jArray_wrongans = oneObject.getJSONArray("incorrect_answers");
-
-                            qa.add(new HashMap<String, String>());
-                            HashMap<String, String> h = qa.get(i);
-                            h.put("question", question);
-                            h.put("correct_answer", rightans);
-
-                            for (int j = 0; j < jArray_wrongans.length(); j++) {
-                                h.put("choice" + (j + 1), Html.fromHtml(jArray_wrongans.getString(j)).toString());
-                            }
-                            h.put("choice0", rightans);
-
-                        } catch (JSONException e) {
-                            Log.e(this.getLocalClassName(), "Error parsing JSON!");
-                            return false;
-                        }
-                    }
-
-                } else {
-                    in = urlConnection.getErrorStream();
-                    InputStreamReader isw = new InputStreamReader(in);
-                    BufferedReader bf = new BufferedReader(isw);
-
-                    StringBuilder data = new StringBuilder();
-                    String line;
-
-                    while ((line = bf.readLine()) != null) {
-                        data.append(line);
-                    }
-                    Log.e(this.getLocalClassName(), data.toString());
-                }
-
+                DownloadQandATask dqa = new DownloadQandATask();
+                dqa.execute(url);
+                qa = dqa.get();
 
             } catch (Exception e) {
                 e.printStackTrace();
                 return false;
-            } finally {
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
-                }
             }
-        }
         return true;
     }
 }
