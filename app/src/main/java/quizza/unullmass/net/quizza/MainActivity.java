@@ -1,5 +1,6 @@
 package quizza.unullmass.net.quizza;
 
+import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -96,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method resets the app to the default starting state
+     * This method handles the click event on 'New Quiz' or 'Reset quiz' button
+     * the app to the default starting state when the Reset/New button is clicked
      *
      * @param view - this is the view reference of the Reset button that transmits the click event
      */
@@ -104,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
         doResetQuiz();
     }
 
+    /**
+     * This method resets the UI and state to defaults.
+     */
     public void doResetQuiz() {
         Button resetBtn = findViewById(R.id.btn_resetnew);
 
@@ -231,6 +236,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method fetches the Questions and Answers from the source and loads the
+     * model in the background
+     *
+     * @return boolean value indicating a successful fetch - true
+     * or lack thereof - false
+     */
     private boolean getQandA() {
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
         if (SDK_INT > 8) {
@@ -318,3 +330,4 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 }
+
